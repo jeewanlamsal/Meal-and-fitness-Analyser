@@ -12,11 +12,25 @@ const Log = require('./models/Log');
 
 const app = express();
 app.use(cors({
-    origin: [
-        'http://localhost:5173',
-        process.env.FRONTEND_URL || '*'
-    ]
-}));app.use(express.json());
+    origin: function(origin, callback) {
+        // Allow requests with no origin (mobile apps, Postman, curl)
+        if (!origin) return callback(null, true);
+        
+        const allowed = [
+            'http://localhost:5173',
+            'https://meal-and-fitness-analyser-c926.vercel.app',
+            process.env.FRONTEND_URL
+        ].filter(Boolean);
+        
+        if (allowed.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+}));
+app.use(express.json());
 
 // Configure Multer for Media Storage
 const storage = multer.diskStorage({
