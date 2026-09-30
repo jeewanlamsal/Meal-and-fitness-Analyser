@@ -7,6 +7,15 @@ const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
+const fs = require('fs');
+
+// Create uploads folder if it doesn't exist
+// This runs on every server start — safe to always have
+if (!fs.existsSync('uploads')) {
+    fs.mkdirSync('uploads', { recursive: true });
+    console.log('✅ uploads/ directory created');
+}
+
 // Import the Mongoose Model you built earlier
 const Log = require('./models/Log');
 

@@ -27,4 +27,9 @@ ENV PYTHON_EXEC=python3
 
 EXPOSE 5000
 
+# Ensure uploads directory exists at runtime
+RUN mkdir -p /app/backend/uploads
+
+
+
 CMD ["node", "server.js"]
