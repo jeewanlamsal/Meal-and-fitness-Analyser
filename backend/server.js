@@ -11,8 +11,12 @@ const fs = require('fs');
 const Log = require('./models/Log');
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        process.env.FRONTEND_URL || '*'
+    ]
+}));app.use(express.json());
 
 // Configure Multer for Media Storage
 const storage = multer.diskStorage({

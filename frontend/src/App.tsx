@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Utensils, Activity, Upload, Loader2, CheckCircle, AlertTriangle, Camera, Video, StopCircle, X, Settings2 } from 'lucide-react';
 import type { NutritionResult, BiomechanicsResult } from './types';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function App() {
   const [activeTab, setActiveTab] = useState<'nutrition' | 'biomechanics'>('nutrition');
   const [loading, setLoading] = useState<boolean>(false);
@@ -33,7 +35,7 @@ export default function App() {
 
     try {
       const response = await axios.post<NutritionResult>(
-        'http://localhost:5000/api/analyze/nutrition',
+        '${API_URL}/api/analyze/nutrition',
         formData,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       );
@@ -53,7 +55,7 @@ export default function App() {
 
     try {
       const response = await axios.post<BiomechanicsResult>(
-        'http://localhost:5000/api/analyze/biomechanics',
+        '${API_URL}/api/analyze/biomechanics',
         formData,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       );
