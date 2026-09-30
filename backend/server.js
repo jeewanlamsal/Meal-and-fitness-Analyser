@@ -7,7 +7,6 @@ const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-const fs = require('fs');
 
 // Create uploads folder if it doesn't exist
 // This runs on every server start — safe to always have
