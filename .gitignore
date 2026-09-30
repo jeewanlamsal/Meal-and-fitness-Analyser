@@ -1,0 +1,27 @@
+# Python
+ai-engine/.venv/
+ai-engine/__pycache__/
+ai-engine/uploads/
+**/__pycache__/
+*.pyc
+
+# Models — exclude from git, handle separately
+*.pt
+*.pth
+*.pkl
+ai-engine/models/
+
+# Node
+backend/node_modules/
+backend/uploads/
+
+# Secrets — NEVER commit these
+.env
+*.env
+.env.local
+*/node_modules/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db

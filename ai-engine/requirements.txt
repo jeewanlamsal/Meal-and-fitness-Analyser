@@ -1,0 +1,8 @@
+opencv-python-headless
+mediapipe==0.10.14
+ultralytics
+numpy
+requests
+
+google-genai
+pillow
