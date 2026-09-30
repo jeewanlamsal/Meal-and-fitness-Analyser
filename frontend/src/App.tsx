@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
-import { Utensils, Activity, Upload, Loader2, CheckCircle, AlertTriangle, Camera, Video, StopCircle, X, Settings2 } from 'lucide-react';
+import { Utensils, Activity, Upload, Loader2, AlertTriangle, Camera, Video, StopCircle, X, Settings2 } from 'lucide-react';
 import type { NutritionResult, BiomechanicsResult } from './types';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
@@ -35,7 +35,7 @@ export default function App() {
 
     try {
       const response = await axios.post<NutritionResult>(
-        '${API_URL}/api/analyze/nutrition',
+        `${API_URL}/api/analyze/nutrition`,
         formData,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       );
@@ -55,7 +55,7 @@ export default function App() {
 
     try {
       const response = await axios.post<BiomechanicsResult>(
-        '${API_URL}/api/analyze/biomechanics',
+        `${API_URL}/api/analyze/biomechanics`,
         formData,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       );
